@@ -97,7 +97,32 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        self.set_light_on() # what will allow me to traverse
+
+
+        while self.light_is_on():
+
+            self.swap_item() # must swap initial None pointer with first item in list
+
+            while self.can_move_right(): # this is how we traverse through to the right
+
+                self.move_right()
+
+                if self.compare_item() == 1: # if the value currently is less than the pointer, we switch
+                    self.swap_item()
+
+            while self.can_move_left() and self.compare_item() is not None: # this is how we traverse back, but stop at the None
+
+                self.move_left()
+
+            self.swap_item()# we then swap the current lowest value at hand with None
+
+            if self.can_move_right():
+
+                self.move_right()
+            else:
+
+                self.set_light_off()
 
 
 if __name__ == "__main__":
